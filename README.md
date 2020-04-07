@@ -1,6 +1,6 @@
 # Terraform - Automated Event Driven Security Remediation
 
-The Terraform module and Cloud Function is used to demonstrate the concepts discussed in this [Article](incoming_url). This repo contains all you need to begin automating remediations for [Event Threat Detection](https://cloud.google.com/event-threat-detection/) findings.
+The Terraform module and Cloud Function is used to demonstrate the concepts discussed in this [Article](https://scalesec.com/blog/automate-security-on-gcp-with-event-threat-detection/). This repo contains all you need to begin automating remediations for [Event Threat Detection](https://cloud.google.com/event-threat-detection/) findings.
 
 ## Prerequisites 
 
