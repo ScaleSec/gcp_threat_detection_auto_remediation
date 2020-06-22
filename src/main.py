@@ -2,9 +2,9 @@ import base64
 import sys
 import json
 import logging
-import googleapiclient.discovery
-import google.cloud.logging
-from google.cloud.logging.handlers import CloudLoggingHandler
+import googleapiclient.discovery # pylint: disable=import-error
+import google.cloud.logging # pylint: disable=import-error
+from google.cloud.logging.handlers import CloudLoggingHandler # pylint: disable=import-error
 
 
 
