@@ -5,8 +5,7 @@ import googleapiclient.discovery
 import logging
 import google.cloud.logging
 from google.cloud.logging.handlers import CloudLoggingHandler
-
-
+from googleapiclient.discovery_cache.base import Cache # pylint: disable=import-error
 
 ## Logging Configuration
 client = google.cloud.logging.Client()
@@ -140,4 +139,16 @@ def set_iam_binding_resource(resource, service, bindings_removed):
 
 ## Creates the GCP Cloud Resource Service
 def create_service():
-    return googleapiclient.discovery.build('cloudresourcemanager', 'v1')
+    return googleapiclient.discovery.build('cloudresourcemanager', 'v1', cache=MemoryCache())
+
+class MemoryCache(Cache):
+    """
+    File-based cache to resolve GCP Cloud Function noisey log entries.
+    """
+    _CACHE = {}
+
+    def get(self, url):
+        return MemoryCache._CACHE.get(url)
+
+    def set(self, url, content):
+        MemoryCache._CACHE[url] = content
