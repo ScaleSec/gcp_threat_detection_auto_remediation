@@ -1,10 +1,10 @@
 import base64
 import sys
 import json
-import googleapiclient.discovery
 import logging
-import google.cloud.logging
-from google.cloud.logging.handlers import CloudLoggingHandler
+import googleapiclient.discovery # pylint: disable=import-error
+import google.cloud.logging # pylint: disable=import-error
+from google.cloud.logging.handlers import CloudLoggingHandler # pylint: disable=import-error
 
 
 
@@ -43,18 +43,18 @@ def process_log_entry(data, context):
                 logging.debug("Member does not exist.")
                 sys.exit(0)
         elif 'organization_id' in entry:
-                resource = 'organizations/' + properties['organization_id']
-                print(f"The Organization is {resource}")
+            resource = 'organizations/' + properties['organization_id']
+            print(f"The Organization is {resource}")
 
-                resource_bindings = retrieve_bindings(service, resource)
-                check_if_member_exists = check_member_on_resource(outside_member_ids, resource_bindings)
-                
-                if check_if_member_exists is True:
-                    bindings_removed = remove_anomalous_iam_resource(outside_member_ids, resource_bindings)
-                    set_iam_binding_resource(resource, service, bindings_removed)
-                else:
-                    logging.debug("Member does not exist.")
-                    sys.exit(0)
+            resource_bindings = retrieve_bindings(service, resource)
+            check_if_member_exists = check_member_on_resource(outside_member_ids, resource_bindings)
+            
+            if check_if_member_exists is True:
+                bindings_removed = remove_anomalous_iam_resource(outside_member_ids, resource_bindings)
+                set_iam_binding_resource(resource, service, bindings_removed)
+            else:
+                logging.debug("Member does not exist.")
+                sys.exit(0)
 
 ## Finds the bound anomalous member as GCP stores it. Member input capitalization may vary
 ## so this is to capture how it is stored in GCP.
