@@ -1,5 +1,8 @@
 # Terraform - Automated Event Driven Security Remediation
 
+[![GitHub Super-Linter](https://github.com/ScaleSec/gcp_threat_detection_auto_remediation/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
+
 The Terraform module and Cloud Function is used to demonstrate the concepts discussed in this [Article](https://scalesec.com/blog/automate-security-on-gcp-with-event-threat-detection/). This repo contains all you need to begin automating remediations for [Event Threat Detection](https://cloud.google.com/event-threat-detection/) findings.
 
 ## Prerequisites 
